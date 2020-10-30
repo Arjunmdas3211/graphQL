@@ -9,13 +9,16 @@ import { store, persistor } from './redux/store';
 import './index.css';
 import App from './App';
 
+
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </BrowserRouter>
-  </Provider>,
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </BrowserRouter>
+    </Provider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
